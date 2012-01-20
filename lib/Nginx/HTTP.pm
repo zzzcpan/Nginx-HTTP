@@ -270,8 +270,8 @@ sub ngx_http_client ($$$$) {
 
             if ($len && length($buf) < length($&) + $len + 2 + 5) {
 
-                $min = $max = length($&) + $len + 2 + 5; 
-                #$max = 0; 
+                $min = length($&) + $len + 2 + 5; 
+                $max = 0; 
                 return NGX_READ;
 
             } elsif ($len) {
