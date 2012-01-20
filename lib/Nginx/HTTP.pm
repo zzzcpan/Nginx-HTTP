@@ -397,11 +397,15 @@ Supports keepalive.
 
 =head1 FUNCTIONS
 
-=head3 C<ngx_http "$ip:$port:timeout=$timeout", $request, sub { }>
+=head3 C<ngx_http "$ip:$port:key=value;key=value...", $request, sub { }>
 
 Establishes new connection with C<$ip:$port> and sends raw HTTP 
 request. C<$request> should be either scalar or scalar reference. 
-Timeout part is optional.
+Additionally there are two options available: C<timeout> and C<ssl>. E.g.:
+
+    ngx_http "1.2.3.4:443:ssl=1;timeout=15", ...
+    ngx_http "1.2.3.4:80:timeout=15", ...
+    ngx_http "1.2.3.4:80", ...
 
 Calls back with parsed response header in C<$_[0]> and scalar reference to 
 the body in C<$_[1]>. 
@@ -414,7 +418,7 @@ the body in C<$_[1]>.
     $body = \"foobar";
 
 C<$body> is cleared right after the callback, so you have to copy its
-content if you want to use it later on.
+content if you want to use it later.
 
 On error calls back without any arguments. Tries to reconnect on the
 next request.
