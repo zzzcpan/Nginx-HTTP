@@ -28,6 +28,10 @@ plan 'no_plan';
 
     my $peer  = "127.0.0.1:$port";
 
+    my $incs = join "\n", 
+                 map { "perl_inc \"$_\";" } 
+                   get_nginx_incs ($nginx, $dir);
+
     prepare_nginx_dir_die $dir, <<"    ENDCONF", <<'    ENDPKG';
 
         worker_processes  1;
@@ -43,10 +47,7 @@ plan 'no_plan';
         http {
             default_type  text/plain;
 
-            perl_inc  ../../blib/lib;
-            perl_inc  ../../blib/arch;
-            perl_inc  ../blib/lib;
-            perl_inc  ../blib/arch;
+$incs
 
             perl_inc  lib;
             perl_inc  ../lib;
