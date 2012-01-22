@@ -1,5 +1,8 @@
 Revision history for Perl extension Nginx::HTTP
 
+0.02  Sun Jan 22 05:13:34 EET 2012
+	- proper @INC for tests;
+
 0.01  Fri Jan 20 22:39:52 EET 2012
 	- original version;
 

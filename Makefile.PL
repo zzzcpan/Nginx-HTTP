@@ -15,7 +15,7 @@ WriteMakefile(
 
     PREREQ_PM => {
         'HTTP::Parser2::XS' => 0,
-        'Nginx::Perl'       => 0,
+        'Nginx::Perl'       => '1.1.13.1',
     },
 
 );
