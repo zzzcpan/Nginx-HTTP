@@ -1,5 +1,8 @@
 Revision history for Perl extension Nginx::HTTP
 
+0.03  Tue Jan 24 04:01:13 EET 2012
+	- bugfix: expected less data then content length;
+
 0.02  Sun Jan 22 05:13:34 EET 2012
 	- proper @INC for tests;
 
