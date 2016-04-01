@@ -169,7 +169,11 @@ sub ngx_http_client ($$$$) {
                      ( !exists $headers{'connection'} ||
                         $headers{'connection'}->[0] !~ /^close$/i );
 
-        if ($headers{'_content_length'}) {
+        if ($headers{'_status'} == 304) {
+
+            $read = $read_identity;
+            return &$read ();
+        } elsif ($headers{'_content_length'}) {
 
             if (length($buf) < $headers{'_content_length'}) {
                 $min = $max = $headers{'_content_length'};
