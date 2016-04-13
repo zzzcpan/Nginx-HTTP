@@ -8,7 +8,7 @@ use bytes;
 require Exporter;
 our @ISA     = qw(Exporter);
 our @EXPORT  = qw(ngx_http_client ngx_http);
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Nginx;
 # use Nginx::Verbose;
